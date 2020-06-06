@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.hubspot.base.BasePage;
+import com.qa.hubspot.utils.Constants;
 import com.qa.hubspot.utils.ElementUtil;
 
 public class HomePage extends BasePage {
@@ -15,12 +16,12 @@ public class HomePage extends BasePage {
 	By accountName=By.cssSelector("span.account-name");
 	
 	//designing contacts page,primary contacts click and clicking on secondary contacts
-	By primaryContactLink=By.id("nav-primary-contacts-branch");
-	By secondaryContactLink=By.id("nav-secondary-contacts");
+	//By primaryContactLink=By.id("nav-primary-contacts-branch");
+	//By secondaryContactLink=By.id("nav-secondary-contacts");
 	
 	public HomePage(WebDriver driver) {
 		this.driver=driver;
-		elementUtil = new ElementUtil(this.driver);
+		//elementUtil = new ElementUtil(this.driver);
 		
 	}
 	public String getHomePageTitle() {
@@ -39,7 +40,7 @@ public class HomePage extends BasePage {
 	}
 		return null;
 	}
-	public ContactsPage goToContactsPage() {
+	/*public ContactsPage goToContactsPage() {
 		clickOnContacts();
 		return new ContactsPage(driver);
 	}
@@ -49,7 +50,6 @@ public class HomePage extends BasePage {
 		elementUtil.waitForElementToBeVisible(secondaryContactLink, 5);
 		elementUtil.doClick(secondaryContactLink);
 	}
-	
-	
+		*/
 	
 }

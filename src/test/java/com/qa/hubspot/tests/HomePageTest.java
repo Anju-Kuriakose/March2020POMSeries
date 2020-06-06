@@ -16,20 +16,22 @@ import com.qa.hubspot.pages.LoginPage;
 import com.qa.hubspot.utils.Constants;
 
 public class HomePageTest extends BaseTest{
-WebDriver driver;
 	
+WebDriver driver;
+Properties prop;
 	BasePage basePage;
 	LoginPage loginPage;
 	HomePage homePage;
-	Properties prop;
 	
-	@BeforeClass
-	public void homesetUp() { 
+	@BeforeTest
+	public void SetUp() { 
 		
-		basePage=new BasePage();
-		prop=basePage.init_prop();
-		driver=basePage.init_driver(prop);
-		loginPage=new LoginPage(driver);
+	basePage=new BasePage();
+prop=basePage.init_prop();
+	//driver=basePage.init_driver("chrome");
+driver=basePage.init_driver(prop);
+	loginPage=new LoginPage(driver);
+	//homePage=loginPage.doLogin("qatester2505@gmail.com","Test@1981");
 		
 		homePage=loginPage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
 	}
@@ -51,9 +53,9 @@ WebDriver driver;
 	public void verifyLoggedInUserTest() {
 		String loggedInUser=homePage.getLoggedInUser();
 		System.out.println("Logged In User is:" +loggedInUser);
+		//Assert.assertEquals(loggedInUser, "student","logged in user is not matched");
 		Assert.assertEquals(loggedInUser, prop.getProperty("accountName"),"logged in user is not matched");
 	}
-	
 	
 	
 	@AfterTest
